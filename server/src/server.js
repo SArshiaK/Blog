@@ -12,6 +12,7 @@ const { mongoConnect } = require('./services/mongo');
 
 const authorsRouter = require('./routes/authors/authors.router');
 const postRouter = require('./routes/posts/posts.router');
+const commentRouter = require('./routes/comments/comments.router');
 
 const app = express();
 
@@ -24,10 +25,7 @@ app.use(express.json());
 
 app.use('/', authorsRouter);
 app.use('/', postRouter);
-
-app.get('/what', (req, res) => {
-    res.status(200).json({lieeee: "nooooo"});
-});
+app.use('/', commentRouter);
 
 
 
