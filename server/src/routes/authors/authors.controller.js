@@ -1,5 +1,9 @@
 const authorModel = require('../../models/author.model');
 
+async function httpGetAllAuthors(req, res){
+    res.status(200).json(await authorModel.getAllAuthors());
+}
+
 async function httpCreateAuthor(req, res){
     const newAuthor = req.body;
     
@@ -44,6 +48,7 @@ async function httpUpdateAuthor(req, res){
 }
 
 module.exports = {
+    httpGetAllAuthors,
     httpCreateAuthor,
     httpDeleteAuthor,
     httpUpdateAuthor

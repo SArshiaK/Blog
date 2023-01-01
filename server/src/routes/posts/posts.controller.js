@@ -7,7 +7,7 @@ async function httpGetAllPosts(req, res){
 
 async function httpCreatePost(req, res){
     const newPost = req.body;
-    if (!newPost.title || !newPost.content || !newPost.authorName || !newPost.authorID){
+    if (!newPost.title || !newPost.content || !newPost.authorID){
         return res.status(400).json({
             error: 'Missing required property',});
     };

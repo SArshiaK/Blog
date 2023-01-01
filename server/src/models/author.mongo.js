@@ -26,8 +26,14 @@ const authorSchema = new mongoose.Schema({
         require: true,
         default: false,
     },
-    posts: [ String ],
-    comments: [ String ],
+    posts: [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'posts'
+    } ],
+    comments: [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'comments'
+    }],
 });
 
-module.exports = mongoose.model('author', authorSchema);
+module.exports = mongoose.model('authors', authorSchema);

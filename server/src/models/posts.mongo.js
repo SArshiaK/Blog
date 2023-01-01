@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const commentsDataBase = require('./comments.mongo');
 
 const postsSchema = new mongoose.Schema({
     postID: {
@@ -13,15 +14,18 @@ const postsSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    authorName: {
-        type: String,
-        require: true
-    },
     authorID: {
         type: Number,
         require: true
     },
-    comments: [ String ],
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'authors'
+    },
+    comments: [ { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'comments'
+    } ],
     deleted: {
         type: Boolean,
         require: true,

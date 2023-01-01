@@ -2,18 +2,29 @@ const authorDatabase = require('./author.mongo');
 
 const DEFAULT_AUTHOR_ID = 1;
 
-async function getLastAuthorID(){
+async function getAuthorID(){
     // const lastAuthor = await authorDatabase.find({authorID: -1});
     const lastAuthor = await authorDatabase.findOne().sort('-authorID');
     if(!lastAuthor){
         return DEFAULT_AUTHOR_ID;
     }
-    return lastAuthor.authorID;
+    return lastAuthor.authorID + 1;
 };
 
 async function findAuthorByID(authorid){
     return await authorDatabase.findOne({authorID: authorid});
 };
+
+async function getAllAuthors(){
+    return await authorDatabase.find({}).populate({
+        path: 'posts', 
+        model: 'posts',
+        select: {postID:1, title: 1, deleted:1, _id:0},
+    }).select({
+        _id:0,
+        __v:0
+    });
+}
 
 async function addAuthor(author){
     await authorDatabase.findOneAndUpdate({
@@ -25,9 +36,9 @@ async function addAuthor(author){
 };
 
 async function createAuthor(author){
-    const lastAuthorID = await getLastAuthorID();
+    const authorID = await getAuthorID();
     const newAuthor = Object.assign(author, {
-        authorID: lastAuthorID + 1,
+        authorID: authorID,
         deleted: false,
     });
 
@@ -51,6 +62,7 @@ async function updateAuthor(updatedAuthor, authorid){
 
 module.exports = {
     findAuthorByID,
+    getAllAuthors,
     createAuthor,
     deleteAthor,
     updateAuthor
