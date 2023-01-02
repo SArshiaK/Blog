@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- <meta name="theme-color" content="#ff4040"> -->
+        <meta name="msapplication-navbutton-color" content="#ff4040" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
@@ -12,7 +14,6 @@
             <a href="/posts" class="authors">Show posts</a>
             <a href="/comments" class="authors">Show comments</a>
         </nav>
-        
 
         <!-- <a href="/auth/google" class="login">Google Login</a> -->
         <!-- <a href="auth/logout" class="signout">Sign out</a> -->
@@ -21,16 +22,34 @@
         <!-- <input type="button" value="Sign Out" onclick="window.location.href='/auth/logout' " /> -->
         <br />
         <br />
-        <button class="btnLogIN" role="button" onclick="window.location.href='/auth/google'">Login</button>
-        <button class="btnSignOut" role="button" onclick="window.location.href='/auth/logout'">Sign Out</button>
+        <div class="buttons">
+            <button class="btnLogIN" role="button" onclick="window.location.href='/auth/google'">Login</button>
+            <button class="btnSignOut" role="button" onclick="window.location.href='/auth/logout'">Sign Out</button>
+        </div>
     </body>
 
     <style>
+        body {
+            /* background-image: linear-gradient(144deg, #ff4040, #170a69 50%, #00ddeb); */
+            background-image: linear-gradient(144deg, #0effaf, #180e53 50%, #ff4040);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        nav {
+            margin-top: 20px;
+            margin-left: 20px;
+            opacity: 0.9;
+        }
         a:link,
         a:visited {
-            background-color: #f44336;
+            /* background-color: #f44336; */
+            /* background-color: #db1c2c; */
+            background-color: #db1c45;
+
             color: white;
-            padding: 14px 25px;
+            padding: 20px 30px;
+            font-family: Phantomsans, sans-serif;
+            font-size: 17px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -39,10 +58,15 @@
 
         a:hover,
         a:active {
-            background-color: red;
+            /* background-color: red; */
+            background-color: #a81717;
+        }
+        .buttons {
+            margin-left: 30px;
         }
         .btnLogIN {
             align-items: center;
+            /* background-color: #3524cf; */
             background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
             border: 0;
             border-radius: 8px;
@@ -51,12 +75,12 @@
             color: #ffffff;
             display: inline;
             font-family: Phantomsans, sans-serif;
-            font-size: 20px;
+            font-size: 30px;
             justify-content: center;
             line-height: 1em;
             max-width: 100%;
             min-width: 140px;
-            padding: 15px;
+            padding: 15px 40px;
             text-decoration: none;
             user-select: none;
             -webkit-user-select: none;
@@ -65,13 +89,15 @@
             cursor: pointer;
         }
 
-        .button-63:active,
-        .button-63:hover {
+        .btnLogIN:active,
+        .btnLogIN:hover {
             outline: 0;
+            /* background-image: none; */
+            background-image: linear-gradient(144deg, #ff40df, #4271f3 50%, #00eb76);
         }
 
         @media (min-width: 768px) {
-            .button-63 {
+            .btnLogIN {
                 font-size: 24px;
                 min-width: 196px;
             }
@@ -88,12 +114,12 @@
             color: #ffffff;
             display: inline;
             font-family: Phantomsans, sans-serif;
-            font-size: 20px;
+            font-size: 30px;
             justify-content: center;
             line-height: 1em;
             max-width: 100%;
             min-width: 140px;
-            padding: 15px;
+            padding: 15px 40px;
             text-decoration: none;
             user-select: none;
             -webkit-user-select: none;
@@ -102,13 +128,14 @@
             cursor: pointer;
         }
 
-        .button-63:active,
-        .button-63:hover {
+        .btnSignOut:active,
+        .btnSignOut:hover {
             outline: 0;
+            /* background-image: none; */
+            background-image: linear-gradient(144deg, #ff4059, #f3d842 50%, #eb0000);
         }
-
         @media (min-width: 768px) {
-            .button-63 {
+            .btnSignOut {
                 font-size: 24px;
                 min-width: 196px;
             }
