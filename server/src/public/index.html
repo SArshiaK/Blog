@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <nav>
+            <a href="/authors" class="authors">Show authors</a>
+            <a href="/posts" class="authors">Show posts</a>
+            <a href="/comments" class="authors">Show comments</a>
+        </nav>
+        
+
+        <!-- <a href="/auth/google" class="login">Google Login</a> -->
+        <!-- <a href="auth/logout" class="signout">Sign out</a> -->
+
+        <!-- <input type="button" value="Login" onclick="window.location.href='/auth/google/' " /> -->
+        <!-- <input type="button" value="Sign Out" onclick="window.location.href='/auth/logout' " /> -->
+        <br />
+        <br />
+        <button class="btnLogIN" role="button" onclick="window.location.href='/auth/google'">Login</button>
+        <button class="btnSignOut" role="button" onclick="window.location.href='/auth/logout'">Sign Out</button>
+    </body>
+
+    <style>
+        a:link,
+        a:visited {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 60%;
+        }
+
+        a:hover,
+        a:active {
+            background-color: red;
+        }
+        .btnLogIN {
+            align-items: center;
+            background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: inline;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 15px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .button-63:active,
+        .button-63:hover {
+            outline: 0;
+        }
+
+        @media (min-width: 768px) {
+            .button-63 {
+                font-size: 24px;
+                min-width: 196px;
+            }
+        }
+
+        .btnSignOut {
+            align-items: center;
+            background-color: #cf245f;
+            background-image: linear-gradient(to bottom right, #fcd34d, #ef4444, #ec4899);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: inline;
+            font-family: Phantomsans, sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 15px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .button-63:active,
+        .button-63:hover {
+            outline: 0;
+        }
+
+        @media (min-width: 768px) {
+            .button-63 {
+                font-size: 24px;
+                min-width: 196px;
+            }
+        }
+    </style>
+</html>
