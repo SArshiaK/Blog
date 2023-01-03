@@ -1,4 +1,6 @@
 const authorDatabase = require('./author.mongo');
+const postsDatabase = require('./posts.mongo');
+const commentsDataBase = require('./comments.mongo');
 
 const DEFAULT_AUTHOR_ID = 1;
 
@@ -16,11 +18,16 @@ async function findAuthorByID(authorid){
 };
 
 async function getAllAuthors(){
-    return await authorDatabase.find({}).populate({
+    return await authorDatabase.find({})
+    .populate({
         path: 'posts', 
         model: 'posts',
         select: {postID:1, title: 1, deleted:1, _id:0},
-    }).select({
+    })
+    .populate(
+        'comments', 
+        {_id: 0, commentID:1, content:1, deleted:1})
+    .select({
         _id:0,
         __v:0
     });
@@ -53,6 +60,25 @@ async function deleteAthor(authorid){
     if(!authorToDelete){
         return false;
     };
+
+    const author = await authorDatabase.findOne({authorID: authorid})
+        .populate('comments', {_id: 0, commentID:1})
+        .populate('posts', {_id: 0, postID:1});
+    
+    const posts = author.posts;
+    const comments = author.comments;
+
+    posts.forEach(async post => {
+        await postsDatabase.updateOne({postID: post.postID}, {
+            deleted: true,
+        });
+    });
+    comments.forEach(async comment => {
+        await commentsDataBase.updateOne({commentID: comment.commentID}, {
+            deleted: true,
+        });
+    });
+
     return true;
 };
 

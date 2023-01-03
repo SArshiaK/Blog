@@ -101,7 +101,26 @@ async function updateComment(changedComment, commentid){
 };
 
 async function deleteComment(commentid){
-    await commentsDataBase.updateOne({commentID: commentid}, {deleted: true});
+    // await commentsDataBase.updateOne({commentID: commentid}, {deleted: true});
+
+    const comment = await commentsDataBase.findOne({commentID: commentid});
+    await postsDatabase.findOneAndUpdate(
+        { postID: comment.postID },
+        {
+            $pull: { comments: comment._id },
+        },
+        { new: true }
+    );
+    
+    await authorDatabase.findOneAndUpdate(
+        { authorID: comment.authorID},
+        {
+            $pull: {comments: comment._id},
+        },
+        { new: true },
+    )
+
+    await commentsDataBase.deleteOne({commentID: commentid});
 };
 
 module.exports = {

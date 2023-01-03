@@ -59,16 +59,36 @@ async function updatePost(changedPost, postid){
 }
 
 async function deletePost(postid){
-    await postsDatabase.updateOne({postID: postid}, {
-        deleted: true,
+    const post = await postsDatabase.findOne({postID: postid}).populate({
+        path: 'comments',
+        model: 'comments',
+        select: {_id:1, commentID:1, authorID:1},
     });
-    // const postToDelete = await postsDatabase.updateOne({postID: postid}, {
-    //     deleted: true
-    // });
-    // if(!postToDelete){
-    //     return false;
-    // };
-    // return true;
+    // Delete post from author posts
+    await authorDatabase.findOneAndUpdate(
+        { authorID: post.authorID },
+        {
+            $pull: { posts: post._id },
+        },
+        { new: true }
+    );
+
+    const comments = post.comments;
+    // Delete comment from author's comments
+    comments.forEach(async comment => {
+        await authorDatabase.findOneAndUpdate(
+            { authorID: comment.authorID},
+            {
+                $pull: {comments: comment._id},
+            },
+            { new: true },
+        )
+        })    
+    // Delete post's comments
+    comments.forEach(async comment => {
+        await commentsDataBase.deleteOne({commentID: comment.commentID})
+    })
+    await postsDatabase.deleteOne({postID: postid});
 };
 
 module.exports = {
