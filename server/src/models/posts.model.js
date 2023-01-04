@@ -30,6 +30,22 @@ async function getAllPosts(){
     });
 }
 
+async function getPostsByAuthor(authorid){
+    return await postsDatabase.findOne({authorID: authorid}).sort({postID: -1})
+    .populate('comments', {content: 1,deleted: 1, _id: 0})
+    .populate('author', {
+        firstName:1,
+        lastName:1,
+        gmail:1,
+        authorID:1,
+        _id:0
+    }).select({
+        _id:0,
+        __v:0,
+        authorID:0
+    });
+}
+
 async function addPost(post){
     await postsDatabase.findOneAndUpdate({postID: post.postID},post,{
         upsert: true,
@@ -95,6 +111,7 @@ async function deletePost(postid){
 
 module.exports = {
     findPostByID,
+    getPostsByAuthor,
     getAllPosts,
     creatNewPost,
     updatePost,

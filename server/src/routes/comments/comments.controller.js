@@ -14,16 +14,17 @@ async function httpGetCommentsByPost(req, res){
     res.status(200).json({comments: postComments});
 };
 
-async function httpCreatComment(req, res){
+async function httpCreateComment(req, res){
+    const postid = req.params.id;
     const newComment = req.body;
 
-    if( !newComment.content || !newComment.postID || !newComment.authorID){
+    if(!newComment.content || !newComment.authorID){
         return res.status(400).json({error: "Missing required property!"});
-    }
+    };
 
-    await commentModel.createNewComment(newComment);
+    await commentModel.createNewComment(newComment, postid);
 
-    res.status(200).json(newComment);
+    res.status(200).json(newComment)
 };
 
 async function httpUpdateComment(req, res){
@@ -57,7 +58,7 @@ async function httpDeleteComment(req, res){
 module.exports = {
     httpGetAllComments,
     httpGetCommentsByPost,
-    httpCreatComment,
+    httpCreateComment,
     httpUpdateComment,
     httpDeleteComment
 }

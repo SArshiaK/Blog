@@ -5,6 +5,12 @@ async function httpGetAllPosts(req, res){
     res.status(200).json(posts);
 };
 
+async function httpGetPostsByAuthor(req, res){
+    const authorid = req.params.id;
+    const posts = await postModel.getPostsByAuthor(authorid);
+    res.status(200).json({authorPosts: posts});
+}
+
 async function httpCreatePost(req, res){
     const newPost = req.body;
     if (!newPost.title || !newPost.content || !newPost.authorID){
@@ -46,6 +52,7 @@ async function httpDeletePost(req, res){
 
 module.exports = {
     httpGetAllPosts,
+    httpGetPostsByAuthor,
     httpCreatePost,
     httpUpdatePost,
     httpDeletePost
