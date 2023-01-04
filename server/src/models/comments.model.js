@@ -90,8 +90,17 @@ async function createNewComment(comment){
     // Add Comment to Post and Author
     const author = await authorDatabase.findOne({authorID: comment.authorID});
     const post = await postsDatabase.findOne({postID: comment.postID});
+    const date = new Date().toLocaleString('fa-IR');
 
-    const newComment = Object.assign(comment, {deleted: false, commentID: Number(CommentID), author: author._id, post: post._id});
+    const newComment = Object.assign(
+        comment, 
+        {
+            commentID: Number(CommentID),
+            publishedDate: date, 
+            author: author._id, 
+            post: post._id,
+            deleted: false, 
+        });
 
     await addComment(newComment);
 };

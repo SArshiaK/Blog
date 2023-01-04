@@ -43,10 +43,12 @@ async function addAuthor(author){
 };
 
 async function createAuthor(author){
+    const date = new Date().toLocaleString('fa-IR');;
     const authorID = await getAuthorID();
     const newAuthor = Object.assign(author, {
         authorID: authorID,
         deleted: false,
+        joinedDate: date,
     });
 
     await addAuthor(newAuthor);

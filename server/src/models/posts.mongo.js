@@ -14,6 +14,10 @@ const postsSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    publishedDate: {
+        type: String,
+        require: true
+    },
     authorID: {
         type: Number,
         require: true

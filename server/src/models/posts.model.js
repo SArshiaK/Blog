@@ -45,8 +45,10 @@ async function addPost(post){
 async function creatNewPost(post){
     const lastPostID = await getPostID();
     const author = await authorDatabase.findOne({authorID: post.authorID});
+    const date = new Date().toLocaleString('fa-IR')
     const newPost = Object.assign(post, {
         postID: Number(lastPostID),
+        publishedDate: date,
         author: author._id,
         deleted: false
     });

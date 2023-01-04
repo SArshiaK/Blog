@@ -1,4 +1,8 @@
+const fs = require('fs');
 const http = require('http');
+const https = require('https');
+const helmet = require('helmet');
+
 
 const express = require('express');
 const path = require('path');
@@ -47,13 +51,11 @@ passport.serializeUser((user, done) => {
 });
 // Read session from the cookie
 passport.deserializeUser((id, done) => {
-    // User.findById(id).then(user => {
-    //     done(null, user);
-    // })
     done(null, id);
 });
 
 const app = express();
+
 
 app.use(cookieSession({
     name: 'session',
@@ -63,8 +65,10 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use(helmet()); ?????? I cant use oauth while i using helmet
+
 app.use(cors({
-    origin: "http://localhost:8000"
+    origin: "https://localhost:8000"
 })
 );
 
@@ -97,9 +101,12 @@ app.use('/', authorsRouter);
 app.use('/', postRouter);
 app.use('/', commentRouter);
 
+const server = https.createServer({
+    key: fs.readFileSync('src/key.pem'),
+    cert:fs.readFileSync('src/cert.pem'),
+}, app)
 
-
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 async function startServer(){
     await mongoConnect();

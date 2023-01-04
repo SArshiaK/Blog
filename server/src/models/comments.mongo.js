@@ -9,6 +9,10 @@ const commnetsSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    publishedDate: {
+        type: String,
+        require: true
+    },
     postID: {type: Number,require: true},
     post: {type: mongoose.Schema.Types.ObjectId, ref:'posts'},
     authorID: {type: Number, require: true },

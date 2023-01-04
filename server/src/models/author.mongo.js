@@ -21,6 +21,10 @@ const authorSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    joinedDate: {
+        type: String,
+        require: true
+    },
     deleted: {
         type:Boolean,
         require: true,
