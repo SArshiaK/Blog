@@ -101,11 +101,13 @@ app.use('/', authorsRouter);
 app.use('/', postRouter);
 app.use('/', commentRouter);
 
+//https
 const server = https.createServer({
     key: fs.readFileSync('src/key.pem'),
     cert:fs.readFileSync('src/cert.pem'),
 }, app)
 
+// http
 // const server = http.createServer(app);
 
 async function startServer(){
