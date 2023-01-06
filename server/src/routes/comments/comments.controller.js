@@ -52,7 +52,7 @@ async function httpDeleteComment(req, res){
     };
 
     await commentModel.deleteComment(commentid);
-    res.status(400).json({status: "Comment deleted successfully"});
+    res.status(200).json({status: "Comment deleted successfully"});
 };
 
 module.exports = {

@@ -31,7 +31,7 @@ async function getAllPosts(){
 }
 
 async function getPostsByAuthor(authorid){
-    return await postsDatabase.findOne({authorID: authorid}).sort({postID: -1})
+    return await postsDatabase.find({authorID: authorid}).sort({postID: -1})
     .populate('comments', {content: 1,deleted: 1, _id: 0})
     .populate('author', {
         firstName:1,
