@@ -42,7 +42,10 @@ async function getAllComment(){
 };
 
 async function getCommentsByPost(postid){
-    // const post = await postsDatabase.findOne({postID: postid}).populate('comments', {content: 1, author: 1, _id: 0, deleted: 1},);
+    const postExist = await postsDatabase.findOne({postID: postid});
+    if(!postExist){
+        return false;
+    }
     const post = await postsDatabase.findOne({postID: postid}).populate({
         path: 'comments',
         select: {content: 1, deleted:1, _id:0},

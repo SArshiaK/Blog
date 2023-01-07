@@ -11,7 +11,11 @@ async function httpGetCommentsByPost(req, res){
 
     const postComments = await commentModel.getCommentsByPost(postid);
 
-    res.status(200).json({comments: postComments});
+    if(postComments === false){
+        return res.status(404).json({error: 'Post Not Found'});
+    }
+    
+    return res.status(200).json({comments: postComments});
 };
 
 async function httpCreateComment(req, res){
@@ -34,7 +38,7 @@ async function httpUpdateComment(req, res){
     
     const commentToUpdate = await commentModel.findCommetnByID(commentid);
     if(!commentToUpdate){
-        res.status(404).json({error: "comment not found"});
+        return res.status(404).json({error: "comment not found"});
     };
 
     const changes = req.body;
@@ -42,7 +46,7 @@ async function httpUpdateComment(req, res){
     await commentModel.updateComment(changes, commentid);
 
     const updatedComment = await commentModel.findCommetnByID(commentid);
-    res.status(200).json(updatedComment);
+    return res.status(200).json(updatedComment);
 };
 
 async function httpDeleteComment(req, res){

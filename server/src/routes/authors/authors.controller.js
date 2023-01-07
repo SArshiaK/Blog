@@ -41,8 +41,14 @@ async function httpUpdateAuthor(req, res){
     const authorid = Number(req.params.id);
     
     const changes = req.body;
-    await authorModel.updateAuthor(changes, authorid);
-
+    const msg = await authorModel.updateAuthor(changes, authorid);
+    if(msg === 'Author Not Found!'){
+        return res.status(404).json({error: msg});
+    }
+    else if(msg === "Author didn't modify!")
+    {
+        return res.status(400).json({error: msg});
+    }
     const updatedAuthor = await authorModel.findAuthorByID(authorid);
     return res.status(200).json(updatedAuthor);
 }

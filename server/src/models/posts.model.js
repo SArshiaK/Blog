@@ -31,6 +31,11 @@ async function getAllPosts(){
 }
 
 async function getPostsByAuthor(authorid){
+    const authorExist = await authorDatabase.findOne({authorID: authorid});
+    if(!authorExist){
+        return false;
+    }
+
     return await postsDatabase.find({authorID: authorid}).sort({postID: -1})
     .populate('comments', {content: 1,deleted: 1, _id: 0})
     .populate('author', {
@@ -61,6 +66,9 @@ async function addPost(post){
 async function creatNewPost(post){
     const lastPostID = await getPostID();
     const author = await authorDatabase.findOne({authorID: post.authorID});
+    if(!author){
+        return false;
+    }
     const date = new Date().toLocaleString('fa-IR')
     const newPost = Object.assign(post, {
         postID: Number(lastPostID),

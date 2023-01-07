@@ -8,7 +8,10 @@ async function httpGetAllPosts(req, res){
 async function httpGetPostsByAuthor(req, res){
     const authorid = req.params.id;
     const posts = await postModel.getPostsByAuthor(authorid);
-    res.status(200).json({authorPosts: posts});
+    if(posts === false){
+        return res.status(404).json({error: 'Author Not Found'});
+    }
+    return res.status(200).json({authorPosts: posts});
 }
 
 async function httpCreatePost(req, res){
@@ -18,9 +21,11 @@ async function httpCreatePost(req, res){
             error: 'Missing required property',});
     };
 
-    await postModel.creatNewPost(newPost);
-
-    res.status(201).json(newPost);
+    const succeed = await postModel.creatNewPost(newPost);
+    if(succeed === false){
+        return res.status(404).json({error: "Author Not Found"});
+    }
+    return res.status(201).json(newPost);
 }
 
 async function httpUpdatePost(req, res){

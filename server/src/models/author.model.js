@@ -85,7 +85,13 @@ async function deleteAthor(authorid){
 };
 
 async function updateAuthor(updatedAuthor, authorid){
-    await authorDatabase.updateOne({authorID: authorid},updatedAuthor);
+    const exist = await authorDatabase.updateOne({authorID: authorid},updatedAuthor);
+    if(exist.matchedCount === 0){
+        return 'Author Not Found!';
+    }
+    else if(exist.modifiedCount === 0){
+        return "Author didn't modify!"
+    }
 }
 
 module.exports = {
