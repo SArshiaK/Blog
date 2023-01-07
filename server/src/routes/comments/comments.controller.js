@@ -22,9 +22,11 @@ async function httpCreateComment(req, res){
         return res.status(400).json({error: "Missing required property!"});
     };
 
-    await commentModel.createNewComment(newComment, postid);
-
-    res.status(200).json(newComment)
+    const done = await commentModel.createNewComment(newComment, postid);
+    if(!done){
+        return res.status(404).json('Post or Author not found!');
+    }
+    return res.status(200).json(newComment)
 };
 
 async function httpUpdateComment(req, res){

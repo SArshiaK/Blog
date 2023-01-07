@@ -89,7 +89,13 @@ async function createNewComment(comment, postid){
     
     // Add Comment to Post and Author
     const author = await authorDatabase.findOne({authorID: comment.authorID});
+    if(!author){
+        return false;
+    }
     const post = await postsDatabase.findOne({postID: postid});
+    if(!post){
+        return false;
+    }
     const date = new Date().toLocaleString('fa-IR');
 
     const newComment = Object.assign(
@@ -104,6 +110,7 @@ async function createNewComment(comment, postid){
         });
 
     await addComment(newComment);
+    return true;
 };
 
 async function updateComment(changedComment, commentid){
