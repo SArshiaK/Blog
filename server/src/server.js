@@ -67,10 +67,11 @@ app.use(passport.session());
 
 // app.use(helmet()); ?????? I cant use oauth while i using helmet
 
-app.use(cors({
-    origin: "https://localhost:8000"
-})
-);
+// app.use(cors({
+//     origin: "https://localhost:8000"
+// })
+// );
+app.use(cors());
 
 app.use(express.json());
 
@@ -114,7 +115,7 @@ async function startServer(){
     await mongoConnect();
     
     server.listen(PORT, () => {
-        console.log(`Listening on PORT ${PORT}`);
+        console.log(`Listening on PORT ${PORT} (https://localhost:${PORT}/)`);
     });
 };
 
