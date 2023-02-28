@@ -5,11 +5,6 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 function CreatePost(props) {
-  const [formData, setFormData] = React.useState({
-    title: "",
-    body: "",
-    authorID: "",
-  });
 
   const postID = props.match.params.id;
   const handleSubmit = async (e) => {

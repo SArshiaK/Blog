@@ -4,32 +4,29 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-function DeletePost(props) {
+function PostsByAuthor(props) {
   const [formData, setFormData] = React.useState({
-    PostID: "",
+    AuthorID: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .delete(`https://localhost:8000/posts/${formData.PostID}`)
-      .then((res) => console.log(res.data.message))
-      .catch((err) => console.log(err));
-    props.history.push("/");
+        props.history.push(`/author/${formData.AuthorID}`);
   };
 
   return (
     <Container>
-      <h1 className="mb-4">Delete Post</h1>
+      <h1 className="mb-4">Find author's posts</h1>
       <Form>
         <Form.Group controlId="name">
-          <Form.Label>PostID</Form.Label>
+          <Form.Label>AuthorID</Form.Label>
           <Form.Control
             type="number"
-            placeholder="Enter post's ID"
-            value={formData.PostID}
+            placeholder="Enter author's ID"
+            value={formData.AuthorID}
             onChange={(e) =>
-              setFormData({ ...formData, PostID: e.target.value })
+              setFormData({ ...formData, AuthorID: e.target.value })
             }
           />
         </Form.Group>
@@ -43,4 +40,4 @@ function DeletePost(props) {
   );
 }
 
-export default DeletePost;
+export default PostsByAuthor;

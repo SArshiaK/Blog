@@ -27,7 +27,10 @@ function HomePage() {
   return (
     <div className="App"><h2>All Posts:</h2> <br></br>
      {
-       data && data.length>0 && data.map((item)=><p>{item['content']}<br></br>
+       data && data.length>0 && data.map((item)=>
+       <p>
+        {item['title']}<br></br>
+        {item['content']}<br></br>
        {item['author']['firstName']}<br></br>
        {item['publishedDate']}<br></br>
        postid: {item['postID']}<br></br>

@@ -30,9 +30,13 @@ function SingleauthorPage(props) {
     <Container>
       <div className="App"><h2>All posts from author with id: {authorID}</h2> <br></br><br></br>
      {
-       data && data.length>0 && data.map((item)=><p>{item['content']}<br></br>
+       data && data.length>0 && data.map((item)=><p>
+         {item['title']}<br></br>
+         {item['content']}<br></br>
        {item['author']['firstName']}<br></br>
        {item['publishedDate']}<br></br>
+       {item['postID']}<br></br>
+
        </p>)
      }
     </div>
