@@ -30,6 +30,7 @@ function HomePage() {
        data && data.length>0 && data.map((item)=><p>{item['content']}<br></br>
        {item['author']['firstName']}<br></br>
        {item['publishedDate']}<br></br>
+       postid: {item['postID']}<br></br>
        </p>)
      }
     </div>
