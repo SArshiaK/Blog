@@ -12,7 +12,10 @@ function Navigation() {
             <Link to="/">Home</Link>
           </Nav.Item>
           <Nav.Item>
-            <Link to="/create">Create Post</Link>
+            <Link to="/create">Create Post </Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Link to="/delete" style={{ marginLeft: '2.4rem' }}>Delete Post</Link>
           </Nav.Item>
         </Nav>
       </Navbar>

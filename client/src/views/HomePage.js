@@ -25,7 +25,7 @@ function HomePage() {
     getData()
   },[])
   return (
-    <div className="App"><h2>All Posts:</h2> <br></br><br></br>
+    <div className="App"><h2>All Posts:</h2> <br></br>
      {
        data && data.length>0 && data.map((item)=><p>{item['content']}<br></br>
        {item['author']['firstName']}<br></br>

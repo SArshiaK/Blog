@@ -6,6 +6,7 @@ import HomePage from "./views/HomePage";
 import CreatePostPage from "./views/CreatePostPage";
 import SinglePostPage from "./views/authorPosts";
 import deletePost from "./views/deletePost";
+import deletePostPage from "./views/deletePostPage"
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <Route path="/author/:id" component={SinglePostPage} />
           <Route path="/create" component={CreatePostPage} />
           <Route path="/delete/:id" component={deletePost} />
+          <Route path="/delete" component={deletePostPage} />
+
 
         </Switch>
       </Router>
