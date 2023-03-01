@@ -20,7 +20,7 @@ function PostsByAuthor(props) {
       <h1 className="mb-4">Find author's posts</h1>
       <Form>
         <Form.Group controlId="name">
-          <Form.Label>AuthorID</Form.Label>
+          <Form.Label><p className="authorID">AuthorID:</p></Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter author's ID"

@@ -28,9 +28,9 @@ function SingleauthorPage(props) {
 
   return (
     <Container>
-      <div className="App"><h2>All posts from author with id: {authorID}</h2> <br></br><br></br>
+      <div className="App"><h2 className="pageTitle">All posts from author with id: {authorID}</h2> <br></br><br></br>
      {
-       data && data.length>0 && data.map((item)=><p>
+       data && data.length>0 && data.map((item)=><p className="allPosts">
          {item['title']}<br></br>
          {item['content']}<br></br>
        {item['author']['firstName']}<br></br>

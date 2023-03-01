@@ -24,19 +24,30 @@ function HomePage() {
   useEffect(()=>{
     getData()
   },[])
+
+  
   return (
-    <div className="App"><h2>All Posts:</h2> <br></br>
+    <div className="App"><h2 className="pageTitle">All Posts:</h2> <br></br>
      {
        data && data.length>0 && data.map((item)=>
-       <p>
-        {item['title']}<br></br>
+       <p className="allPosts">
+         
+        <p className="title" >{item['title']}</p><br></br>
         {item['content']}<br></br>
        {item['author']['firstName']}<br></br>
        {item['publishedDate']}<br></br>
        postid: {item['postID']}<br></br>
+       <div className="comments">
+         <p className="commentTitle">comments:</p><br></br>
+          {item['comments'].map((comment)=>
+         <p className="comment">{comment['content']}<br></br></p>
+         )}
+        </div>
        </p>)
+       
      }
     </div>
+    
   );
 }
 

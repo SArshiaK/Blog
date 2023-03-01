@@ -23,7 +23,7 @@ function DeletePost(props) {
       <h1 className="mb-4">Delete Post</h1>
       <Form>
         <Form.Group controlId="name">
-          <Form.Label>PostID</Form.Label>
+          <Form.Label><p className="postID">PostID</p></Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter post's ID"

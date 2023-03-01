@@ -1,5 +1,12 @@
 .App {
     text-align: center;
+    background-image: url('../images/2.jpg');
+    min-height: 1000px;
+    background-attachment: fixed; 
+    /* background-position: center; */
+    background-repeat: no-repeat;  
+    background-size: cover;
+    color: rgb(7, 7, 7);
   }
   
   .App-logo {
@@ -36,4 +43,48 @@
       transform: rotate(360deg);
     }
   }
+
+  .title{
+    color: black;
+    display: inline;
+    font-size: 20px;
+  }
+
+  .comment{
+    display: inline;
+    color: rgb(7, 54, 207);
+    
+  }
+
+  .commentTitle{
+    color: rgb(7, 54, 207);
+    display: inline;
+  }
+
+  .allPosts{
+    /* background-color: rgb(97, 219, 133); */
+    /* background-color: rgb(111, 236, 198); */
+    background-color: rgb(129, 255, 217);
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+  }
   
+  .pageTitle{ 
+    color: ghostwhite;
+  }
+
+  .mb-4{
+    color: ghostwhite;
+  }
+
+  .authorID{
+    color: aliceblue;
+  }
+
+  .postID{
+    color: aliceblue
+  }
