@@ -25,8 +25,10 @@ function SingleauthorPage(props) {
       })
       .catch((error) => {
         console.log(error);
-        alert(error);
-        props.history.push("/")
+        if(error.message === 'Request failed with status code 404'){
+          alert(error);
+          props.history.push("/");
+        }
       });
   }, [authorID]);
 

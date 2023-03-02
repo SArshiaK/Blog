@@ -35,7 +35,13 @@ async function httpUpdatePost(req, res){
     if(!postToUpdate){
         return res.status(404).json({erro: 'Post Not Found'});
     }
-
+    
+    if(req.body.content === ""){
+        delete(req.body.content);
+    }
+    if(req.body.title === ""){
+        delete(req.body.title);
+    }
     const changes = req.body;
     await postModel.updatePost(changes, postid);
 
