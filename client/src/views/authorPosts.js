@@ -23,7 +23,11 @@ function SingleauthorPage(props) {
         console.log(myJson);
         setAuthor(myJson)
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert(error);
+        props.history.push("/")
+      });
   }, [authorID]);
 
   return (

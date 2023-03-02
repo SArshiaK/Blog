@@ -20,7 +20,10 @@ function CreatePost(props) {
         authorID: formData.authorID,
       })
       .then((res) => console.log(res.data.message))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert(err)
+        console.log(err)
+      });
     props.history.push("/");
   };
 
@@ -29,7 +32,7 @@ function CreatePost(props) {
       <h1 className="mb-4">Create Post</h1>
       <Form>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label><p className="titleTexts">Title</p></Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter post title"
@@ -40,7 +43,7 @@ function CreatePost(props) {
           />
         </Form.Group>
         <Form.Group controlId="body">
-          <Form.Label>Post text</Form.Label>
+          <Form.Label><p className="titleTexts">Post text</p></Form.Label>
           <Form.Control
             as="textarea"
             rows="3"
@@ -50,7 +53,7 @@ function CreatePost(props) {
           />
         </Form.Group>
         <Form.Group controlId="name">
-          <Form.Label>AuthorID</Form.Label>
+          <Form.Label><p className="titleTexts">AuthorID</p></Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter author's ID"

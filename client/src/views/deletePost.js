@@ -12,7 +12,10 @@ function CreatePost(props) {
     await axios
       .delete(`https://localhost:8000/posts/${postID}`)
       .then((res) => console.log(res.data.message))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
     props.history.push("/");
   };
 

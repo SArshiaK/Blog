@@ -14,7 +14,10 @@ function DeletePost(props) {
     await axios
       .delete(`https://localhost:8000/posts/${formData.PostID}`)
       .then((res) => console.log(res.data.message))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert(err);
+      });
     props.history.push("/");
   };
 

@@ -88,3 +88,8 @@
   .postID{
     color: aliceblue
   }
+
+  .titleTexts{
+    color: aliceblue;
+    display: inline;
+  }
