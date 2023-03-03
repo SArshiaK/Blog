@@ -39,7 +39,7 @@ function SingleauthorPage(props) {
           props.history.push('/');
         }
       });
-  }, [authorID], history.props);
+  }, [authorID]);
 
   return (
     <Container>
