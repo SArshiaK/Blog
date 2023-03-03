@@ -9,6 +9,7 @@ import deletePost from "./views/deletePost";
 import deletePostPage from "./views/deletePostPage"
 import authorPostsPage from "./views/authorPostsPage";
 import UpdatePost from "./views/UpdatePostPage";
+import AllPosts from "./views/allPostsPage";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
           <Route path="/author/:id" component={SinglePostPage} />
           <Route path="/author" component={authorPostsPage} />
           <Route path="/update" component={UpdatePost} />
+          <Route path="/posts" component={AllPosts} />
+
 
 
 

@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
+require('dotenv').config();
+const PORT = process.env.PORT || 8000;
+
 function CreatePost(props) {
   const [formData, setFormData] = React.useState({
     title: "",
@@ -14,7 +17,7 @@ function CreatePost(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("https://localhost:8000/posts", {
+      .post(`https://localhost:${PORT}/posts`, {
         title: formData.title,
         content: formData.body,
         authorID: formData.authorID,
@@ -24,7 +27,7 @@ function CreatePost(props) {
         alert(err)
         console.log(err)
       });
-    props.history.push("/");
+    props.history.push("/posts");
   };
 
   return (

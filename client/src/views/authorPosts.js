@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 
+require('dotenv').config();
+const PORT = process.env.PORT || 8000;
+
 function SingleauthorPage(props) {
   const [data, setAuthor] = useState({});
 
   const authorID = props.match.params.id;
   useEffect(() => {
     axios
-      .get(`https://localhost:8000/authors/${authorID}/posts`,{
+      .get(`https://localhost:${PORT}/authors/${authorID}/posts`,{
         headers : { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'

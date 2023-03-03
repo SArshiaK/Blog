@@ -15,6 +15,9 @@ function Navigation() {
             <Link to="/create">Create Post </Link>
           </Nav.Item>
           <Nav.Item>
+            <Link to="/posts" style={{ marginLeft: '2.4rem' }}>All Posts</Link>
+          </Nav.Item>
+          <Nav.Item>
             <Link to="/delete" style={{ marginLeft: '2.4rem' }}>Delete Post</Link>
           </Nav.Item>
           <Nav.Item>

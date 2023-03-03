@@ -74,6 +74,7 @@ app.use(passport.session());
 app.use(cors());
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..', 'public'))) // serve client and server on the same port
 
 app.get('/auth/google', passport.authenticate('google', {
     scope: ['email',]

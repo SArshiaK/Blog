@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
+require('dotenv').config();
+const PORT = process.env.PORT || 8000;
+
 function DeletePost(props) {
   const [formData, setFormData] = React.useState({
     PostID: "",
@@ -12,13 +15,13 @@ function DeletePost(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .delete(`https://localhost:8000/posts/${formData.PostID}`)
+      .delete(`https://localhost:${PORT}/posts/${formData.PostID}`)
       .then((res) => console.log(res.data.message))
       .catch((err) => {
         console.log(err);
         alert(err);
       });
-    props.history.push("/");
+    props.history.push("/posts");
   };
 
   return (

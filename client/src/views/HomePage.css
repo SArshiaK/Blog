@@ -1,6 +1,7 @@
 .App {
     text-align: center;
-    background-image: url('../images/2.jpg');
+    /* background-image: url('../images/2.jpg'); */
+    background-image: linear-gradient(144deg, #0effaf, #180e53 50%, #ff4040);
     min-height: 1000px;
     background-attachment: fixed; 
     /* background-position: center; */
@@ -93,3 +94,85 @@
     color: aliceblue;
     display: inline;
   }
+
+
+  .btnLogIN {
+    align-items: center;
+    /* background-color: #3524cf; */
+    background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: inline;
+    font-family: Phantomsans, sans-serif;
+    font-size: 30px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 15px 40px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.btnLogIN:active,
+.btnLogIN:hover {
+    outline: 0;
+    /* background-image: none; */
+    background-image: linear-gradient(144deg, #ff40df, #4271f3 50%, #00eb76);
+}
+
+@media (min-width: 768px) {
+    .btnLogIN {
+        font-size: 24px;
+        min-width: 196px;
+    }
+}
+
+.btnSignOut {
+    align-items: center;
+    background-color: #cf245f;
+    background-image: linear-gradient(to bottom right, #fcd34d, #ef4444, #ec4899);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: inline;
+    font-family: Phantomsans, sans-serif;
+    font-size: 30px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 15px 40px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.btnSignOut:active,
+.btnSignOut:hover {
+    outline: 0;
+    /* background-image: none; */
+    background-image: linear-gradient(144deg, #ff4059, #f3d842 50%, #eb0000);
+}
+@media (min-width: 768px) {
+    .btnSignOut {
+        font-size: 24px;
+        min-width: 196px;
+    }
+}
+
+.space{
+  display: inline;
+}
