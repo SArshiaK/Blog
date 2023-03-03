@@ -13,12 +13,12 @@ function checkLoggedIn(req, res, next){
     next();
 }
 
-postRouter.get('/posts', postController.httpGetAllPosts);
+postRouter.get('/posts', checkLoggedIn, postController.httpGetAllPosts);
 
-postRouter.get('/authors/:id/posts', postController.httpGetPostsByAuthor);
+postRouter.get('/authors/:id/posts', checkLoggedIn, postController.httpGetPostsByAuthor);
 
-postRouter.post('/posts', postController.httpCreatePost);
-postRouter.patch('/posts/:id', postController.httpUpdatePost);
-postRouter.delete('/posts/:id', postController.httpDeletePost);
+postRouter.post('/posts', checkLoggedIn, postController.httpCreatePost);
+postRouter.patch('/posts/:id', checkLoggedIn, postController.httpUpdatePost);
+postRouter.delete('/posts/:id', checkLoggedIn, postController.httpDeletePost);
 
 module.exports = postRouter;

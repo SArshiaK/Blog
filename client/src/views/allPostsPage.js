@@ -4,7 +4,7 @@ import "./HomePage.css";
 require('dotenv').config();
 const PORT = process.env.PORT || 8000;
 
-function AllPosts() {
+function AllPosts(props) {
   const [data,setData]=useState([]);
 console.log(PORT);
   const getData=()=>{
@@ -17,13 +17,17 @@ console.log(PORT);
     }
     )
       .then(function(response){
-        console.log(response)
+        console.log(response);
         return response.json();
       })
       .then(function(myJson) {
         console.log(myJson);
-        setData(myJson)
-      });
+        setData(myJson);
+        if(myJson['error'] === 'Please log in first'){
+          alert(myJson['error']);
+          props.history.push('/');
+        }
+      })
   }
   useEffect(()=>{
     getData()

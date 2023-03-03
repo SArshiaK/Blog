@@ -16,12 +16,16 @@ function DeletePost(props) {
     e.preventDefault();
     await axios
       .delete(`https://localhost:${PORT}/posts/${formData.PostID}`)
-      .then((res) => console.log(res.data.message))
+      .then((res) => {console.log(res.data.message)
+        props.history.push("/posts");})
       .catch((err) => {
         console.log(err);
-        alert(err);
+        if(err.message === 'Request failed with status code 400'){
+          alert('Please log in first.');
+          props.history.push('/');
+        }
       });
-    props.history.push("/posts");
+    
   };
 
   return (

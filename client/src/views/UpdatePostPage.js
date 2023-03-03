@@ -21,12 +21,16 @@ function UpdatePost(props) {
         title: formData.title,
         content: formData.content,
       })
-      .then((res) => console.log(res.data.message))
+      .then((res) => {console.log(res.data.message)
+        props.history.push("/posts");})
       .catch((err) => {
-        alert(err);
+        if(err.message === 'Request failed with status code 400'){
+          alert('Please log in first.');
+          props.history.push('/');
+        }
         console.log(err);
       });
-    props.history.push("/posts");
+    
   };
 
   return (

@@ -24,13 +24,19 @@ function SingleauthorPage(props) {
       })
       .then(function(myJson) {
         console.log(myJson);
-        setAuthor(myJson)
+        alert(myJson['error']);
+        setAuthor(myJson);
+        props.history.push('/');
       })
       .catch((error) => {
         console.log(error);
         if(error.message === 'Request failed with status code 404'){
           alert(error);
-          props.history.push("/");
+          props.history.push("/author");
+        }
+        else if(error.message === 'Request failed with status code 400'){
+          alert('Please log in first.');
+          props.history.push('/');
         }
       });
   }, [authorID]);
