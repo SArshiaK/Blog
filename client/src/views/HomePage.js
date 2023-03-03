@@ -19,7 +19,7 @@ function HomePage() {
     history.push(path);
   }
 
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
     console.log(PORT);
     const getData = () => {
         fetch(`https://localhost:${PORT}/posts`, {
