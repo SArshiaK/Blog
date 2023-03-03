@@ -19,27 +19,7 @@ function HomePage() {
     history.push(path);
   }
 
-    // const [data, setData] = useState([]);
-    console.log(PORT);
-    const getData = () => {
-        fetch(`https://localhost:${PORT}/posts`, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-        })
-            .then(function (response) {
-                console.log(response);
-                return response.json();
-            })
-            .then(function (myJson) {
-                console.log(myJson);
-                setData(myJson);
-            });
-    };
-    useEffect(() => {
-        getData();
-    }, []);
+   
 
     return (
         <Container>
