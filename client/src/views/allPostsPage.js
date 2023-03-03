@@ -29,9 +29,9 @@ console.log(PORT);
         }
       })
   }
-  // useEffect(()=>{
-  //   getData()
-  // },[])
+  useEffect(()=>{
+    getData()
+  },[])
 
   
   return (
